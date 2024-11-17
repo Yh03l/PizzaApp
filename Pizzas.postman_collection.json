@@ -1,0 +1,777 @@
+{
+	"info": {
+		"_postman_id": "3dac91d5-9631-43d7-984b-22c019fedf2a",
+		"name": "PizzaApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31905754"
+	},
+	"item": [
+		{
+			"name": "Menu disponible",
+			"item": [
+				{
+					"name": "Pizzas preestablecidas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/pizzas",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pizzas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ingredientes disponibles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/ingredients",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ingredients"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "BASE URL: [http://localhost:8000/api/...](http://localhost:8000/api/orders)  \nMétodo: GET  \nHeaders:  \nContent-Type: application/json  \nAccept: application/json  \n  \nÉstos endpoints listan las pizzas con sus recetas preestablecidas y los ingredientes disponibles para agregar a las ordenes de preparacion de pizzas."
+		},
+		{
+			"name": "Ordenes",
+			"item": [
+				{
+					"name": "1. Pedido Mixto en Martes (2x1)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"day\": \"martes\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 1,\r\n            \"quantity\": 2,\r\n            \"extra_ingredients\": [3, 4]\r\n        },\r\n        {\r\n            \"type\": \"custom\",\r\n            \"quantity\": 2,\r\n            \"ingredients\": [1, 2, 3, 4]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"day\": \"martes\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 1,\r\n            \"quantity\": 2,\r\n            \"extra_ingredients\": [3, 4]\r\n        },\r\n        {\r\n            \"type\": \"custom\",\r\n            \"quantity\": 2,\r\n            \"ingredients\": [1, 2, 3, 4]\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.18"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Nov 2024 01:53:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"orden\": {\n            \"pizzas\": [\n                {\n                    \"tipo_pizza\": \"Preestablecida: Margherita\",\n                    \"cantidad\": 2,\n                    \"base\": {\n                        \"nombre\": \"Masa Base\",\n                        \"precio_unitario\": \"30.00 Bs.\"\n                    },\n                    \"ingredientes\": [\n                        {\n                            \"id\": 1,\n                            \"nombre\": \"Masa Base\",\n                            \"precio\": \"20.00 Bs.\"\n                        },\n                        {\n                            \"id\": 2,\n                            \"nombre\": \"Salsa de Tomate\",\n                            \"precio\": \"5.00 Bs.\"\n                        },\n                        {\n                            \"id\": 3,\n                            \"nombre\": \"Mozzarella\",\n                            \"precio\": \"10.00 Bs.\"\n                        },\n                        {\n                            \"id\": 11,\n                            \"nombre\": \"Albahaca\",\n                            \"precio\": \"3.00 Bs.\"\n                        },\n                        {\n                            \"id\": 3,\n                            \"nombre\": \"Mozzarella\",\n                            \"precio\": \"10.00 Bs.\"\n                        },\n                        {\n                            \"id\": 4,\n                            \"nombre\": \"Pepperoni\",\n                            \"precio\": \"15.00 Bs.\"\n                        }\n                    ],\n                    \"detalle_precios\": {\n                        \"precio_unitario\": 93,\n                        \"precio_unitario_formato\": \"93.00 Bs.\",\n                        \"cantidad\": 2,\n                        \"subtotal\": 186,\n                        \"subtotal_formato\": \"186.00 Bs.\",\n                        \"descuento\": 93,\n                        \"descuento_formato\": \"93.00 Bs.\",\n                        \"total\": 93,\n                        \"total_formato\": \"93.00 Bs.\"\n                    },\n                    \"promocion\": {\n                        \"dia\": \"Martes\",\n                        \"promocion_aplicada\": \"Promoción 2x1\",\n                        \"descuento_aplicado\": 93,\n                        \"descuento_aplicado_formato\": \"93.00 Bs.\"\n                    }\n                },\n                {\n                    \"tipo_pizza\": \"Personalizada\",\n                    \"cantidad\": 2,\n                    \"base\": {\n                        \"nombre\": \"Masa Base\",\n                        \"precio_unitario\": \"20.00 Bs.\"\n                    },\n                    \"ingredientes\": [\n                        {\n                            \"id\": 1,\n                            \"nombre\": \"Masa Base\",\n                            \"precio\": \"20.00 Bs.\"\n                        },\n                        {\n                            \"id\": 2,\n                            \"nombre\": \"Salsa de Tomate\",\n                            \"precio\": \"5.00 Bs.\"\n                        },\n                        {\n                            \"id\": 3,\n                            \"nombre\": \"Mozzarella\",\n                            \"precio\": \"10.00 Bs.\"\n                        },\n                        {\n                            \"id\": 4,\n                            \"nombre\": \"Pepperoni\",\n                            \"precio\": \"15.00 Bs.\"\n                        }\n                    ],\n                    \"detalle_precios\": {\n                        \"precio_unitario\": 70,\n                        \"precio_unitario_formato\": \"70.00 Bs.\",\n                        \"cantidad\": 2,\n                        \"subtotal\": 140,\n                        \"subtotal_formato\": \"140.00 Bs.\",\n                        \"descuento\": 70,\n                        \"descuento_formato\": \"70.00 Bs.\",\n                        \"total\": 70,\n                        \"total_formato\": \"70.00 Bs.\"\n                    },\n                    \"promocion\": {\n                        \"dia\": \"Martes\",\n                        \"promocion_aplicada\": \"Promoción 2x1\",\n                        \"descuento_aplicado\": 70,\n                        \"descuento_aplicado_formato\": \"70.00 Bs.\"\n                    }\n                }\n            ],\n            \"resumen\": {\n                \"subtotal\": \"326.00 Bs.\",\n                \"descuento_total\": \"163.00 Bs.\",\n                \"costo_delivery\": \"10.00 Bs.\",\n                \"total\": \"173.00 Bs.\"\n            },\n            \"promocion\": {\n                \"dia\": \"Martes\",\n                \"delivery_gratis\": false\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "2. Pedido Multiple en Jueves (Delivery Gratis)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"day\": \"jueves\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 2,\r\n            \"quantity\": 1,\r\n            \"remove_ingredients\": [1]\r\n        },\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 3,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"type\": \"custom\",\r\n            \"quantity\": 1,\r\n            \"ingredients\": [1, 2, 5, 6]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"day\": \"jueves\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 2,\r\n            \"quantity\": 1,\r\n            \"remove_ingredients\": [1]\r\n        },\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 3,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"type\": \"custom\",\r\n            \"quantity\": 1,\r\n            \"ingredients\": [1, 2, 5, 6]\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.18"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Nov 2024 01:54:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"orden\": {\n            \"pizzas\": [\n                {\n                    \"tipo_pizza\": \"Preestablecida: Pepperoni\",\n                    \"cantidad\": 1,\n                    \"base\": {\n                        \"nombre\": \"Masa Base\",\n                        \"precio_unitario\": \"35.00 Bs.\"\n                    },\n                    \"ingredientes\": [\n                        {\n                            \"id\": 2,\n                            \"nombre\": \"Salsa de Tomate\",\n                            \"precio\": \"5.00 Bs.\"\n                        },\n                        {\n                            \"id\": 3,\n                            \"nombre\": \"Mozzarella\",\n                            \"precio\": \"10.00 Bs.\"\n                        },\n                        {\n                            \"id\": 4,\n                            \"nombre\": \"Pepperoni\",\n                            \"precio\": \"15.00 Bs.\"\n                        }\n                    ],\n                    \"detalle_precios\": {\n                        \"precio_unitario\": 65,\n                        \"precio_unitario_formato\": \"65.00 Bs.\",\n                        \"cantidad\": 1,\n                        \"subtotal\": 65,\n                        \"subtotal_formato\": \"65.00 Bs.\",\n                        \"descuento\": 0,\n                        \"descuento_formato\": \"0.00 Bs.\",\n                        \"total\": 65,\n                        \"total_formato\": \"65.00 Bs.\"\n                    },\n                    \"promocion\": {\n                        \"dia\": \"Jueves\",\n                        \"promocion_aplicada\": \"Delivery Gratis\",\n                        \"descuento_aplicado\": 0,\n                        \"descuento_aplicado_formato\": \"0.00 Bs.\"\n                    }\n                },\n                {\n                    \"tipo_pizza\": \"Preestablecida: Hawaiana\",\n                    \"cantidad\": 1,\n                    \"base\": {\n                        \"nombre\": \"Masa Base\",\n                        \"precio_unitario\": \"40.00 Bs.\"\n                    },\n                    \"ingredientes\": [\n                        {\n                            \"id\": 1,\n                            \"nombre\": \"Masa Base\",\n                            \"precio\": \"20.00 Bs.\"\n                        },\n                        {\n                            \"id\": 2,\n                            \"nombre\": \"Salsa de Tomate\",\n                            \"precio\": \"5.00 Bs.\"\n                        },\n                        {\n                            \"id\": 3,\n                            \"nombre\": \"Mozzarella\",\n                            \"precio\": \"10.00 Bs.\"\n                        },\n                        {\n                            \"id\": 5,\n                            \"nombre\": \"Jamón\",\n                            \"precio\": \"12.00 Bs.\"\n                        },\n                        {\n                            \"id\": 6,\n                            \"nombre\": \"Piña\",\n                            \"precio\": \"8.00 Bs.\"\n                        }\n                    ],\n                    \"detalle_precios\": {\n                        \"precio_unitario\": 95,\n                        \"precio_unitario_formato\": \"95.00 Bs.\",\n                        \"cantidad\": 1,\n                        \"subtotal\": 95,\n                        \"subtotal_formato\": \"95.00 Bs.\",\n                        \"descuento\": 0,\n                        \"descuento_formato\": \"0.00 Bs.\",\n                        \"total\": 95,\n                        \"total_formato\": \"95.00 Bs.\"\n                    },\n                    \"promocion\": {\n                        \"dia\": \"Jueves\",\n                        \"promocion_aplicada\": \"Delivery Gratis\",\n                        \"descuento_aplicado\": 0,\n                        \"descuento_aplicado_formato\": \"0.00 Bs.\"\n                    }\n                },\n                {\n                    \"tipo_pizza\": \"Personalizada\",\n                    \"cantidad\": 1,\n                    \"base\": {\n                        \"nombre\": \"Masa Base\",\n                        \"precio_unitario\": \"20.00 Bs.\"\n                    },\n                    \"ingredientes\": [\n                        {\n                            \"id\": 1,\n                            \"nombre\": \"Masa Base\",\n                            \"precio\": \"20.00 Bs.\"\n                        },\n                        {\n                            \"id\": 2,\n                            \"nombre\": \"Salsa de Tomate\",\n                            \"precio\": \"5.00 Bs.\"\n                        },\n                        {\n                            \"id\": 5,\n                            \"nombre\": \"Jamón\",\n                            \"precio\": \"12.00 Bs.\"\n                        },\n                        {\n                            \"id\": 6,\n                            \"nombre\": \"Piña\",\n                            \"precio\": \"8.00 Bs.\"\n                        }\n                    ],\n                    \"detalle_precios\": {\n                        \"precio_unitario\": 65,\n                        \"precio_unitario_formato\": \"65.00 Bs.\",\n                        \"cantidad\": 1,\n                        \"subtotal\": 65,\n                        \"subtotal_formato\": \"65.00 Bs.\",\n                        \"descuento\": 0,\n                        \"descuento_formato\": \"0.00 Bs.\",\n                        \"total\": 65,\n                        \"total_formato\": \"65.00 Bs.\"\n                    },\n                    \"promocion\": {\n                        \"dia\": \"Jueves\",\n                        \"promocion_aplicada\": \"Delivery Gratis\",\n                        \"descuento_aplicado\": 0,\n                        \"descuento_aplicado_formato\": \"0.00 Bs.\"\n                    }\n                }\n            ],\n            \"resumen\": {\n                \"subtotal\": \"225.00 Bs.\",\n                \"descuento_total\": \"0.00 Bs.\",\n                \"costo_delivery\": \"0.00 Bs.\",\n                \"total\": \"225.00 Bs.\"\n            },\n            \"promocion\": {\n                \"dia\": \"Jueves\",\n                \"delivery_gratis\": true\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "3. Pedido Grande en Miércoles (2x1)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"day\": \"miercoles\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 1,\r\n            \"quantity\": 4\r\n        },\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 2,\r\n            \"quantity\": 2,\r\n            \"extra_ingredients\": [7, 8, 9]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"day\": \"miercoles\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 1,\r\n            \"quantity\": 4\r\n        },\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 2,\r\n            \"quantity\": 2,\r\n            \"extra_ingredients\": [7, 8, 9]\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.18"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Nov 2024 01:55:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"orden\": {\n            \"pizzas\": [\n                {\n                    \"tipo_pizza\": \"Preestablecida: Margherita\",\n                    \"cantidad\": 4,\n                    \"base\": {\n                        \"nombre\": \"Masa Base\",\n                        \"precio_unitario\": \"30.00 Bs.\"\n                    },\n                    \"ingredientes\": [\n                        {\n                            \"id\": 1,\n                            \"nombre\": \"Masa Base\",\n                            \"precio\": \"20.00 Bs.\"\n                        },\n                        {\n                            \"id\": 2,\n                            \"nombre\": \"Salsa de Tomate\",\n                            \"precio\": \"5.00 Bs.\"\n                        },\n                        {\n                            \"id\": 3,\n                            \"nombre\": \"Mozzarella\",\n                            \"precio\": \"10.00 Bs.\"\n                        },\n                        {\n                            \"id\": 11,\n                            \"nombre\": \"Albahaca\",\n                            \"precio\": \"3.00 Bs.\"\n                        }\n                    ],\n                    \"detalle_precios\": {\n                        \"precio_unitario\": 68,\n                        \"precio_unitario_formato\": \"68.00 Bs.\",\n                        \"cantidad\": 4,\n                        \"subtotal\": 272,\n                        \"subtotal_formato\": \"272.00 Bs.\",\n                        \"descuento\": 136,\n                        \"descuento_formato\": \"136.00 Bs.\",\n                        \"total\": 136,\n                        \"total_formato\": \"136.00 Bs.\"\n                    },\n                    \"promocion\": {\n                        \"dia\": \"Miercoles\",\n                        \"promocion_aplicada\": \"Promoción 2x1\",\n                        \"descuento_aplicado\": 136,\n                        \"descuento_aplicado_formato\": \"136.00 Bs.\"\n                    }\n                },\n                {\n                    \"tipo_pizza\": \"Preestablecida: Pepperoni\",\n                    \"cantidad\": 2,\n                    \"base\": {\n                        \"nombre\": \"Masa Base\",\n                        \"precio_unitario\": \"35.00 Bs.\"\n                    },\n                    \"ingredientes\": [\n                        {\n                            \"id\": 1,\n                            \"nombre\": \"Masa Base\",\n                            \"precio\": \"20.00 Bs.\"\n                        },\n                        {\n                            \"id\": 2,\n                            \"nombre\": \"Salsa de Tomate\",\n                            \"precio\": \"5.00 Bs.\"\n                        },\n                        {\n                            \"id\": 3,\n                            \"nombre\": \"Mozzarella\",\n                            \"precio\": \"10.00 Bs.\"\n                        },\n                        {\n                            \"id\": 4,\n                            \"nombre\": \"Pepperoni\",\n                            \"precio\": \"15.00 Bs.\"\n                        },\n                        {\n                            \"id\": 7,\n                            \"nombre\": \"Champiñones\",\n                            \"precio\": \"7.00 Bs.\"\n                        },\n                        {\n                            \"id\": 8,\n                            \"nombre\": \"Pimientos\",\n                            \"precio\": \"5.00 Bs.\"\n                        },\n                        {\n                            \"id\": 9,\n                            \"nombre\": \"Cebolla\",\n                            \"precio\": \"4.00 Bs.\"\n                        }\n                    ],\n                    \"detalle_precios\": {\n                        \"precio_unitario\": 101,\n                        \"precio_unitario_formato\": \"101.00 Bs.\",\n                        \"cantidad\": 2,\n                        \"subtotal\": 202,\n                        \"subtotal_formato\": \"202.00 Bs.\",\n                        \"descuento\": 101,\n                        \"descuento_formato\": \"101.00 Bs.\",\n                        \"total\": 101,\n                        \"total_formato\": \"101.00 Bs.\"\n                    },\n                    \"promocion\": {\n                        \"dia\": \"Miercoles\",\n                        \"promocion_aplicada\": \"Promoción 2x1\",\n                        \"descuento_aplicado\": 101,\n                        \"descuento_aplicado_formato\": \"101.00 Bs.\"\n                    }\n                }\n            ],\n            \"resumen\": {\n                \"subtotal\": \"474.00 Bs.\",\n                \"descuento_total\": \"237.00 Bs.\",\n                \"costo_delivery\": \"10.00 Bs.\",\n                \"total\": \"247.00 Bs.\"\n            },\n            \"promocion\": {\n                \"dia\": \"Miercoles\",\n                \"delivery_gratis\": false\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "4. Pedido en Día Sin Promoción",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"day\": \"viernes\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"custom\",\r\n            \"quantity\": 1,\r\n            \"ingredients\": [1, 2, 3]\r\n        },\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 4,\r\n            \"quantity\": 1,\r\n            \"extra_ingredients\": [5, 6],\r\n            \"remove_ingredients\": [2]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"day\": \"viernes\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"custom\",\r\n            \"quantity\": 1,\r\n            \"ingredients\": [1, 2, 3]\r\n        },\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 4,\r\n            \"quantity\": 1,\r\n            \"extra_ingredients\": [5, 6],\r\n            \"remove_ingredients\": [2]\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.18"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Nov 2024 01:55:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"orden\": {\n            \"pizzas\": [\n                {\n                    \"tipo_pizza\": \"Personalizada\",\n                    \"cantidad\": 1,\n                    \"base\": {\n                        \"nombre\": \"Masa Base\",\n                        \"precio_unitario\": \"20.00 Bs.\"\n                    },\n                    \"ingredientes\": [\n                        {\n                            \"id\": 1,\n                            \"nombre\": \"Masa Base\",\n                            \"precio\": \"20.00 Bs.\"\n                        },\n                        {\n                            \"id\": 2,\n                            \"nombre\": \"Salsa de Tomate\",\n                            \"precio\": \"5.00 Bs.\"\n                        },\n                        {\n                            \"id\": 3,\n                            \"nombre\": \"Mozzarella\",\n                            \"precio\": \"10.00 Bs.\"\n                        }\n                    ],\n                    \"detalle_precios\": {\n                        \"precio_unitario\": 55,\n                        \"precio_unitario_formato\": \"55.00 Bs.\",\n                        \"cantidad\": 1,\n                        \"subtotal\": 55,\n                        \"subtotal_formato\": \"55.00 Bs.\",\n                        \"descuento\": 0,\n                        \"descuento_formato\": \"0.00 Bs.\",\n                        \"total\": 55,\n                        \"total_formato\": \"55.00 Bs.\"\n                    },\n                    \"promocion\": {\n                        \"dia\": \"Viernes\",\n                        \"promocion_aplicada\": \"Ninguna\",\n                        \"descuento_aplicado\": 0,\n                        \"descuento_aplicado_formato\": \"0.00 Bs.\"\n                    }\n                },\n                {\n                    \"tipo_pizza\": \"Preestablecida: Cuatro Quesos\",\n                    \"cantidad\": 1,\n                    \"base\": {\n                        \"nombre\": \"Masa Base\",\n                        \"precio_unitario\": \"45.00 Bs.\"\n                    },\n                    \"ingredientes\": [\n                        {\n                            \"id\": 1,\n                            \"nombre\": \"Masa Base\",\n                            \"precio\": \"20.00 Bs.\"\n                        },\n                        {\n                            \"id\": 3,\n                            \"nombre\": \"Mozzarella\",\n                            \"precio\": \"10.00 Bs.\"\n                        },\n                        {\n                            \"id\": 12,\n                            \"nombre\": \"Queso Parmesano\",\n                            \"precio\": \"12.00 Bs.\"\n                        },\n                        {\n                            \"id\": 13,\n                            \"nombre\": \"Queso Gorgonzola\",\n                            \"precio\": \"15.00 Bs.\"\n                        },\n                        {\n                            \"id\": 14,\n                            \"nombre\": \"Queso Fontina\",\n                            \"precio\": \"14.00 Bs.\"\n                        },\n                        {\n                            \"id\": 5,\n                            \"nombre\": \"Jamón\",\n                            \"precio\": \"12.00 Bs.\"\n                        },\n                        {\n                            \"id\": 6,\n                            \"nombre\": \"Piña\",\n                            \"precio\": \"8.00 Bs.\"\n                        }\n                    ],\n                    \"detalle_precios\": {\n                        \"precio_unitario\": 136,\n                        \"precio_unitario_formato\": \"136.00 Bs.\",\n                        \"cantidad\": 1,\n                        \"subtotal\": 136,\n                        \"subtotal_formato\": \"136.00 Bs.\",\n                        \"descuento\": 0,\n                        \"descuento_formato\": \"0.00 Bs.\",\n                        \"total\": 136,\n                        \"total_formato\": \"136.00 Bs.\"\n                    },\n                    \"promocion\": {\n                        \"dia\": \"Viernes\",\n                        \"promocion_aplicada\": \"Ninguna\",\n                        \"descuento_aplicado\": 0,\n                        \"descuento_aplicado_formato\": \"0.00 Bs.\"\n                    }\n                }\n            ],\n            \"resumen\": {\n                \"subtotal\": \"191.00 Bs.\",\n                \"descuento_total\": \"0.00 Bs.\",\n                \"costo_delivery\": \"10.00 Bs.\",\n                \"total\": \"201.00 Bs.\"\n            },\n            \"promocion\": {\n                \"dia\": \"Viernes\",\n                \"delivery_gratis\": false\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "5. Pedido Complejo con Modificaciones",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"day\": \"sabado\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 1,\r\n            \"quantity\": 2,\r\n            \"extra_ingredients\": [4, 5],\r\n            \"remove_ingredients\": [1, 2]\r\n        },\r\n        {\r\n            \"type\": \"custom\",\r\n            \"quantity\": 1,\r\n            \"ingredients\": [1, 3, 5, 7]\r\n        },\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 3,\r\n            \"quantity\": 1,\r\n            \"extra_ingredients\": [8, 9]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"day\": \"sabado\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 1,\r\n            \"quantity\": 2,\r\n            \"extra_ingredients\": [4, 5],\r\n            \"remove_ingredients\": [1, 2]\r\n        },\r\n        {\r\n            \"type\": \"custom\",\r\n            \"quantity\": 1,\r\n            \"ingredients\": [1, 3, 5, 7]\r\n        },\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 3,\r\n            \"quantity\": 1,\r\n            \"extra_ingredients\": [8, 9]\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.18"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Nov 2024 01:55:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"orden\": {\n            \"pizzas\": [\n                {\n                    \"tipo_pizza\": \"Preestablecida: Margherita\",\n                    \"cantidad\": 2,\n                    \"base\": {\n                        \"nombre\": \"Masa Base\",\n                        \"precio_unitario\": \"30.00 Bs.\"\n                    },\n                    \"ingredientes\": [\n                        {\n                            \"id\": 3,\n                            \"nombre\": \"Mozzarella\",\n                            \"precio\": \"10.00 Bs.\"\n                        },\n                        {\n                            \"id\": 11,\n                            \"nombre\": \"Albahaca\",\n                            \"precio\": \"3.00 Bs.\"\n                        },\n                        {\n                            \"id\": 4,\n                            \"nombre\": \"Pepperoni\",\n                            \"precio\": \"15.00 Bs.\"\n                        },\n                        {\n                            \"id\": 5,\n                            \"nombre\": \"Jamón\",\n                            \"precio\": \"12.00 Bs.\"\n                        }\n                    ],\n                    \"detalle_precios\": {\n                        \"precio_unitario\": 70,\n                        \"precio_unitario_formato\": \"70.00 Bs.\",\n                        \"cantidad\": 2,\n                        \"subtotal\": 140,\n                        \"subtotal_formato\": \"140.00 Bs.\",\n                        \"descuento\": 0,\n                        \"descuento_formato\": \"0.00 Bs.\",\n                        \"total\": 140,\n                        \"total_formato\": \"140.00 Bs.\"\n                    },\n                    \"promocion\": {\n                        \"dia\": \"Sabado\",\n                        \"promocion_aplicada\": \"Ninguna\",\n                        \"descuento_aplicado\": 0,\n                        \"descuento_aplicado_formato\": \"0.00 Bs.\"\n                    }\n                },\n                {\n                    \"tipo_pizza\": \"Personalizada\",\n                    \"cantidad\": 1,\n                    \"base\": {\n                        \"nombre\": \"Masa Base\",\n                        \"precio_unitario\": \"20.00 Bs.\"\n                    },\n                    \"ingredientes\": [\n                        {\n                            \"id\": 1,\n                            \"nombre\": \"Masa Base\",\n                            \"precio\": \"20.00 Bs.\"\n                        },\n                        {\n                            \"id\": 3,\n                            \"nombre\": \"Mozzarella\",\n                            \"precio\": \"10.00 Bs.\"\n                        },\n                        {\n                            \"id\": 5,\n                            \"nombre\": \"Jamón\",\n                            \"precio\": \"12.00 Bs.\"\n                        },\n                        {\n                            \"id\": 7,\n                            \"nombre\": \"Champiñones\",\n                            \"precio\": \"7.00 Bs.\"\n                        }\n                    ],\n                    \"detalle_precios\": {\n                        \"precio_unitario\": 69,\n                        \"precio_unitario_formato\": \"69.00 Bs.\",\n                        \"cantidad\": 1,\n                        \"subtotal\": 69,\n                        \"subtotal_formato\": \"69.00 Bs.\",\n                        \"descuento\": 0,\n                        \"descuento_formato\": \"0.00 Bs.\",\n                        \"total\": 69,\n                        \"total_formato\": \"69.00 Bs.\"\n                    },\n                    \"promocion\": {\n                        \"dia\": \"Sabado\",\n                        \"promocion_aplicada\": \"Ninguna\",\n                        \"descuento_aplicado\": 0,\n                        \"descuento_aplicado_formato\": \"0.00 Bs.\"\n                    }\n                },\n                {\n                    \"tipo_pizza\": \"Preestablecida: Hawaiana\",\n                    \"cantidad\": 1,\n                    \"base\": {\n                        \"nombre\": \"Masa Base\",\n                        \"precio_unitario\": \"40.00 Bs.\"\n                    },\n                    \"ingredientes\": [\n                        {\n                            \"id\": 1,\n                            \"nombre\": \"Masa Base\",\n                            \"precio\": \"20.00 Bs.\"\n                        },\n                        {\n                            \"id\": 2,\n                            \"nombre\": \"Salsa de Tomate\",\n                            \"precio\": \"5.00 Bs.\"\n                        },\n                        {\n                            \"id\": 3,\n                            \"nombre\": \"Mozzarella\",\n                            \"precio\": \"10.00 Bs.\"\n                        },\n                        {\n                            \"id\": 5,\n                            \"nombre\": \"Jamón\",\n                            \"precio\": \"12.00 Bs.\"\n                        },\n                        {\n                            \"id\": 6,\n                            \"nombre\": \"Piña\",\n                            \"precio\": \"8.00 Bs.\"\n                        },\n                        {\n                            \"id\": 8,\n                            \"nombre\": \"Pimientos\",\n                            \"precio\": \"5.00 Bs.\"\n                        },\n                        {\n                            \"id\": 9,\n                            \"nombre\": \"Cebolla\",\n                            \"precio\": \"4.00 Bs.\"\n                        }\n                    ],\n                    \"detalle_precios\": {\n                        \"precio_unitario\": 104,\n                        \"precio_unitario_formato\": \"104.00 Bs.\",\n                        \"cantidad\": 1,\n                        \"subtotal\": 104,\n                        \"subtotal_formato\": \"104.00 Bs.\",\n                        \"descuento\": 0,\n                        \"descuento_formato\": \"0.00 Bs.\",\n                        \"total\": 104,\n                        \"total_formato\": \"104.00 Bs.\"\n                    },\n                    \"promocion\": {\n                        \"dia\": \"Sabado\",\n                        \"promocion_aplicada\": \"Ninguna\",\n                        \"descuento_aplicado\": 0,\n                        \"descuento_aplicado_formato\": \"0.00 Bs.\"\n                    }\n                }\n            ],\n            \"resumen\": {\n                \"subtotal\": \"313.00 Bs.\",\n                \"descuento_total\": \"0.00 Bs.\",\n                \"costo_delivery\": \"10.00 Bs.\",\n                \"total\": \"323.00 Bs.\"\n            },\n            \"promocion\": {\n                \"dia\": \"Sabado\",\n                \"delivery_gratis\": false\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "6. Pedido Solo Pizzas Personalizadas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"day\": \"lunes\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"custom\",\r\n            \"quantity\": 2,\r\n            \"ingredients\": [1, 2, 3, 4]\r\n        },\r\n        {\r\n            \"type\": \"custom\",\r\n            \"quantity\": 1,\r\n            \"ingredients\": [5, 6, 7]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"day\": \"lunes\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"custom\",\r\n            \"quantity\": 2,\r\n            \"ingredients\": [1, 2, 3, 4]\r\n        },\r\n        {\r\n            \"type\": \"custom\",\r\n            \"quantity\": 1,\r\n            \"ingredients\": [5, 6, 7]\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.18"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Nov 2024 01:55:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"orden\": {\n            \"pizzas\": [\n                {\n                    \"tipo_pizza\": \"Personalizada\",\n                    \"cantidad\": 2,\n                    \"base\": {\n                        \"nombre\": \"Masa Base\",\n                        \"precio_unitario\": \"20.00 Bs.\"\n                    },\n                    \"ingredientes\": [\n                        {\n                            \"id\": 1,\n                            \"nombre\": \"Masa Base\",\n                            \"precio\": \"20.00 Bs.\"\n                        },\n                        {\n                            \"id\": 2,\n                            \"nombre\": \"Salsa de Tomate\",\n                            \"precio\": \"5.00 Bs.\"\n                        },\n                        {\n                            \"id\": 3,\n                            \"nombre\": \"Mozzarella\",\n                            \"precio\": \"10.00 Bs.\"\n                        },\n                        {\n                            \"id\": 4,\n                            \"nombre\": \"Pepperoni\",\n                            \"precio\": \"15.00 Bs.\"\n                        }\n                    ],\n                    \"detalle_precios\": {\n                        \"precio_unitario\": 70,\n                        \"precio_unitario_formato\": \"70.00 Bs.\",\n                        \"cantidad\": 2,\n                        \"subtotal\": 140,\n                        \"subtotal_formato\": \"140.00 Bs.\",\n                        \"descuento\": 0,\n                        \"descuento_formato\": \"0.00 Bs.\",\n                        \"total\": 140,\n                        \"total_formato\": \"140.00 Bs.\"\n                    },\n                    \"promocion\": {\n                        \"dia\": \"Lunes\",\n                        \"promocion_aplicada\": \"Ninguna\",\n                        \"descuento_aplicado\": 0,\n                        \"descuento_aplicado_formato\": \"0.00 Bs.\"\n                    }\n                },\n                {\n                    \"tipo_pizza\": \"Personalizada\",\n                    \"cantidad\": 1,\n                    \"base\": {\n                        \"nombre\": \"Masa Base\",\n                        \"precio_unitario\": \"20.00 Bs.\"\n                    },\n                    \"ingredientes\": [\n                        {\n                            \"id\": 5,\n                            \"nombre\": \"Jamón\",\n                            \"precio\": \"12.00 Bs.\"\n                        },\n                        {\n                            \"id\": 6,\n                            \"nombre\": \"Piña\",\n                            \"precio\": \"8.00 Bs.\"\n                        },\n                        {\n                            \"id\": 7,\n                            \"nombre\": \"Champiñones\",\n                            \"precio\": \"7.00 Bs.\"\n                        }\n                    ],\n                    \"detalle_precios\": {\n                        \"precio_unitario\": 47,\n                        \"precio_unitario_formato\": \"47.00 Bs.\",\n                        \"cantidad\": 1,\n                        \"subtotal\": 47,\n                        \"subtotal_formato\": \"47.00 Bs.\",\n                        \"descuento\": 0,\n                        \"descuento_formato\": \"0.00 Bs.\",\n                        \"total\": 47,\n                        \"total_formato\": \"47.00 Bs.\"\n                    },\n                    \"promocion\": {\n                        \"dia\": \"Lunes\",\n                        \"promocion_aplicada\": \"Ninguna\",\n                        \"descuento_aplicado\": 0,\n                        \"descuento_aplicado_formato\": \"0.00 Bs.\"\n                    }\n                }\n            ],\n            \"resumen\": {\n                \"subtotal\": \"187.00 Bs.\",\n                \"descuento_total\": \"0.00 Bs.\",\n                \"costo_delivery\": \"10.00 Bs.\",\n                \"total\": \"197.00 Bs.\"\n            },\n            \"promocion\": {\n                \"dia\": \"Lunes\",\n                \"delivery_gratis\": false\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "7. Caso de Error - Pizza ID Inválido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"day\": \"martes\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 99,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "422 Unprocessable Content",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"day\": \"martes\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"preset\",\r\n            \"pizza_id\": 99,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.18"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Nov 2024 01:56:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Error de validación\",\n    \"errors\": {\n        \"pizzas.0.pizza_id\": [\n            \"The selected pizzas.0.pizza_id is invalid.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "8. Caso de Error - Ingredientes Inválidos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"day\": \"miercoles\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"custom\",\r\n            \"quantity\": 1,\r\n            \"ingredients\": [99, 100]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "422 Unprocessable Content",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"day\": \"miercoles\",\r\n    \"pizzas\": [\r\n        {\r\n            \"type\": \"custom\",\r\n            \"quantity\": 1,\r\n            \"ingredients\": [99, 100]\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.18"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Nov 2024 01:56:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Error de validación\",\n    \"errors\": {\n        \"pizzas.0.ingredients.0\": [\n            \"The selected pizzas.0.ingredients.0 is invalid.\"\n        ],\n        \"pizzas.0.ingredients.1\": [\n            \"The selected pizzas.0.ingredients.1 is invalid.\"\n        ]\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "BASE URL: [http://localhost:8000/api/orders](http://localhost:8000/api/orders)  \nMétodo: POST  \nHeaders:  \nContent-Type: application/json  \nAccept: application/json\n\nEstos casos de prueba cubren:\n\n- Diferentes días con y sin promociones\n    \n- Mezcla de pizzas preestablecidas y personalizadas\n    \n- Diferentes cantidades de pizzas\n    \n- Modificaciones de ingredientes (agregar/remover)\n    \n- Casos de error comunes\n    \n- Pedidos simples y complejos"
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://127.0.0.1:8000",
+			"type": "default"
+		}
+	]
+}
